@@ -1,5 +1,7 @@
 # Virtual Assistant
 
+it can listen to your command and in return it will answer some basic qustions of this command. User can ask for time, date, information of any person etc.
+
 # Installation
 
 (run those in command prompt/cmt/terminal) For the robot to listen to our voice/speech **pip install speechRecognition**
