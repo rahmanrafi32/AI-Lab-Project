@@ -4,7 +4,9 @@ it can listen to your command and in return it will answer some basic qustions o
 
 # Installation
 
-(run those in command prompt/cmt/terminal) For the robot to listen to our voice/speech **pip install speechRecognition**
+run those in command prompt/cmt/terminal
+
+For the robot to listen to our voice/speech **pip install speechRecognition** and ** pip install pyaudio**
 
 To speak out, or text to speech **pip install pyttsx3**
 
