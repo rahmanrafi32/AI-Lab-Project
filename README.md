@@ -1,6 +1,6 @@
 # Virtual Assistant
 
-it can listen to your command and in return it will answer some basic qustions of this command. User can ask for time, date, information of any person etc.
+it can listen to your command and in return it will answer some basic qustions of the commands. User can ask for time, date, information of any person it will answer correctly.
 
 # Installation
 
