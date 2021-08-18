@@ -3,6 +3,7 @@ import pyttsx3
 import datetime
 import pyjokes
 import pywhatkit
+import requests
 import wikipedia
 import speech_recognition as sr
 
@@ -47,17 +48,14 @@ def takeCommand():
     return command
 
 
-def quit():
-    sys.exit(0)
-
-
 def runAssistant():
     command = takeCommand()
-    print(command)
+
     if 'play' in command:
         song = command.replace('play', '')
         speak('playing' + song)
         pywhatkit.playonyt(song)
+        sys.exit(0)
     elif 'time' in command:
         sayTime()
     elif 'date' in command:
@@ -65,14 +63,30 @@ def runAssistant():
     elif 'who is' in command:
         person = command.replace('who is', '')
         info = wikipedia.summary(person, 2)
+        print(info)
         speak(info)
+    elif 'tell us something about' in command:
+        person = command.replace('tell us something about', '')
+        info = wikipedia.summary(person, 2)
+        print(info)
+        speak(info)
+    elif 'temperature' in command:
+        city = command.replace("what is the temperature of", '')
+        link = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=75278c8087bf1d38f9b5cdcc6bba7d9b"
+        api_link = requests.get(link)
+        api_data = api_link.json()
+        if api_data['cod'] == '404':
+            print("Invalid city:{} Please check city name".format(city))
+        else:
+            temp_city = ((api_data['main']['temp']) - 273.15)
+            speak("Current temperature is: {:.2f} deg C".format(temp_city))
     elif 'are you single' in command:
         speak('I am in a relationship with wifi')
     elif 'joke' in command:
         speak(pyjokes.get_joke())
     elif 'thanks' or 'bye' or 'thank you' in command:
         speak("Have a nice day!")
-        quit()
+        sys.exit(0)
     else:
         speak('Please say the command again.')
 
